@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>بوفيه مشتاق | المذاق الأصيل</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --primary-color: #ff6b00;
+        --primary-hover: #e05e00;
+        --secondary-color: #2d3748;
+        --bg-light: #f7fafc;
+        --white: #ffffff;
+        --text-dark: #1a202c;
+        --text-muted: #718096;
+        --border-radius: 12px;
+        --shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Cairo", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+        line-height: 1.6;
+      }
+
+      /* Header & Navigation */
+      header {
+        background-color: var(--white);
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      #emptyCartText {
+        opacity: 0.5;
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-menu a {
+        text-decoration: none;
+        color: var(--secondary-color);
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+
+      .nav-menu a:hover {
+        color: var(--primary-color);
+      }
+
+      .cart-icon-btn {
+        background: none;
+        border: none;
+        position: relative;
+        cursor: pointer;
+        font-size: 1.3rem;
+        color: var(--secondary-color);
+      }
+
+      .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -10px;
+        background-color: var(--primary-color);
+        color: var(--white);
+        font-size: 0.75rem;
+        padding: 2px 6px;
+        border-radius: 50%;
+        font-weight: bold;
+      }
+
+      /* Hero Section */
+      .hero {
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          url("https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1200&q=80")
+            center/cover no-repeat;
+        color: var(--white);
+        padding: 8rem 2rem;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        color: var(--white);
+        padding: 0.75rem 2rem;
+        border: none;
+        border-radius: var(--border-radius);
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-hover);
+      }
+
+      /* Info Strips */
+      .info-strip {
+        background-color: var(--white);
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        margin-top: -2rem;
+        border-radius: var(--border-radius);
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        text-align: center;
+      }
+
+      .info-item i {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Menu Section */
+      .menu-section {
+        max-width: 1200px;
+        margin: 4rem auto;
+        padding: 0 2rem;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+        font-size: 2rem;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background-color: var(--primary-color);
+        margin: 0.5rem auto 0;
+        border-radius: 2px;
+      }
+
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .menu-card {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .menu-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .menu-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .menu-info {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+
+      .menu-name {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .menu-desc {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        flex-grow: 1;
+      }
+
+      .menu-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: auto;
+      }
+
+      .price {
+        color: var(--primary-color);
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+
+      .add-btn {
+        background-color: var(--secondary-color);
+        color: var(--white);
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .add-btn:hover {
+        background-color: var(--primary-color);
+      }
+
+      /* Cart Sidebar Drawer */
+      .cart-drawer {
+        position: fixed;
+        top: 0;
+        left: -400px;
+        width: 350px;
+        height: 100%;
+        background-color: var(--white);
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 2000;
+        transition: left 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+      }
+
+      .cart-drawer.open {
+        left: 0;
+      }
+
+      .cart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid #edf2f7;
+        padding-bottom: 1rem;
+      }
+
+      .close-cart {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--text-muted);
+      }
+
+      .cart-items {
+        flex-grow: 1;
+        overflow-y: auto;
+      }
+
+      .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #f7fafc;
+      }
+
+      .cart-item-details h4 {
+        font-size: 1rem;
+      }
+
+      .cart-item-details span {
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+
+      .remove-item {
+        background: none;
+        border: none;
+        color: #e53e3e;
+        cursor: pointer;
+      }
+
+      .cart-footer {
+        border-top: 1px solid #edf2f7;
+        padding-top: 1rem;
+      }
+
+      .total-price {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      /* Contact & Location Section */
+      .contact-section {
+        background-color: var(--white);
+        padding: 4rem 2rem;
+      }
+
+      .contact-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+
+      .contact-info h3 {
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+
+      .contact-links {
+        list-style: none;
+        margin-top: 1.5rem;
+      }
+
+      .contact-links li {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+
+      .contact-links i {
+        color: var(--primary-color);
+        width: 20px;
+      }
+
+      .contact-links a {
+        color: var(--text-dark);
+        text-decoration: none;
+      }
+
+      .contact-links a:hover {
+        color: var(--primary-color);
+      }
+
+      .map-container {
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        height: 300px;
+      }
+
+      .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--secondary-color);
+        color: var(--white);
+        text-align: center;
+        padding: 2rem;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .info-strip {
+          grid-template-columns: 1fr;
+          margin-top: 1rem;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        .nav-menu {
+          display: none; /* مبسط للموبايل */
+        }
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Наvigation -->
+    <header>
+      <div class="nav-container">
+        <a href="#" class="logo">
+          <i class="fa-solid to fa-utensils"></i> بوفيه مشتاق
+        </a>
+        <ul class="nav-menu">
+          <li><a href="#">الرئيسية</a></li>
+          <li><a href="#menu">قائمة الطعام</a></li>
+          <li><a href="#contact">تواصل معنا</a></li>
+        </ul>
+        <button class="cart-icon-btn" id="cartBtn">
+          <i class="fa-solid fa-basket-shopping"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>بوفيه مشتاق</h1>
+      <p>
+        أجود أنواع الساندويتشات السريعة، الوجبات الخفيفة، والعصائر الطازجة على
+        مدار الساعة في الرياض.
+      </p>
+      <a href="#menu" class="btn-primary"
+        ><i class="fa-solid fa-list-ul"></i> تصفح المنيو</a
+      >
+    </section>
+
+    <!-- Info Strip -->
+    <div class="info-strip">
+      <div class="info-item">
+        <i class="fa-solid fa-clock"></i>
+        <h3>ساعات العمل</h3>
+        <p>مفتوح على مدار 24 ساعة (طوال الأسبوع)</p>
+      </div>
+      <div class="info-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <h3>الموقع</h3>
+        <p>ابن حجر، الدار البيضاء، الرياض</p>
+      </div>
+      <div class="info-item">
+        <i class="fa-solid fa-star"></i>
+        <h3>التقييم</h3>
+        <p>4.3 نجمة على خرائط جوجل</p>
+      </div>
+    </div>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+      <h2 class="section-title">قائمة الطعام (المنيو)</h2>
+      <div class="menu-grid">
+        <!-- Item 1 -->
+        <div class="menu-card">
+          <img
+            src="https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=400&q=80"
+            alt="ساندويتش كبدة"
+            class="menu-img"
+          />
+          <div class="menu-info">
+            <h3 class="menu-name">ساندويتش كبدة بالجبن</h3>
+            <p class="menu-desc">
+              كبدة طازجة محشية بالخضار والبهارات الخاصة مع جبن سائل فاخر.
+            </p>
+            <div class="menu-footer">
+              <span class="price">7 ريال</span>
+              <button
+                class="add-btn"
+                onclick="addToCart('ساندويتش كبدة بالجبن', 7)"
+              >
+                إضافة للسلة
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Item 2 -->
+        <div class="menu-card">
+          <img
+            src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?auto=format&fit=crop&w=400&q=80"
+            alt="ساندويتش بيض"
+            class="menu-img"
+          />
+          <div class="menu-info">
+            <h3 class="menu-name">ساندويتش بيض مقلي / مسلوق</h3>
+            <p class="menu-desc">
+              ساندويتش بيض كلاسيكي مجهز بالطريقة التقليدية مع لمسة بوفيه مشتاق.
+            </p>
+            <div class="menu-footer">
+              <span class="price">5 ريال</span>
+              <button class="add-btn" onclick="addToCart('ساندويتش بيض', 5)">
+                إضافة للسلة
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Item 3 -->
+        <div class="menu-card">
+          <img
+            src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=400&q=80"
+            alt="شكشوكة"
+            class="menu-img"
+          />
+          <div class="menu-info">
+            <h3 class="menu-name">ساندويتش شكشوكة مميزة</h3>
+            <p class="menu-desc">
+              بيض مطبوخ مع الطماطم، البصل، والبهارات الطازجة.
+            </p>
+            <div class="menu-footer">
+              <span class="price">5 ريال</span>
+              <button
+                class="add-btn"
+                onclick="addToCart('ساندويتش شكشوكة مميزة', 5)"
+              >
+                إضافة للسلة
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Item 4 -->
+        <div class="menu-card">
+          <img
+            src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=400&q=80"
+            alt="بطاطس مقلية"
+            class="menu-img"
+          />
+          <div class="menu-info">
+            <h3 class="menu-name">صحن / ساندويتش بطاطس</h3>
+            <p class="menu-desc">
+              بطاطس مقرمشة وذهبية مع الكاتشب والمايونيز حسب اختيارك.
+            </p>
+            <div class="menu-footer">
+              <span class="price">4 ريال</span>
+              <button class="add-btn" onclick="addToCart('بطاطس مقرمشة', 4)">
+                إضافة للسلة
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Location Section -->
+    <section class="contact-section" id="contact">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>تواصل معنا وتفضّل بزيارتنا</h3>
+          <p>
+            يسعدنا خدمتك في أي وقت، نحن متواجدون لتلبية طلباتك على مدار الساعة.
+          </p>
+          <ul class="contact-links">
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <a href="tel:+966539919613">0539919613 (966+)</a>
+            </li>
+            <li>
+              <i class="fa-solid fa-location-arrow"></i>
+              <span>ابن حجر، الدار البيضاء، الرياض 14517</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-map-location-dot"></i>
+              <a
+                href="https://maps.google.com/?cid=6925082856653379916"
+                target="_blank"
+                style="color: var(--primary-color); font-weight: bold"
+                >فتح موقع المطعم في خرائط Google</a
+              >
+            </li>
+          </ul>
+        </div>
+        <!-- Google Maps Static/Dynamic View Simulation -->
+        <div class="map-container">
+          <!-- تم استخدام موقع خطوط الطول والعرض التقريبية للبوفيه لإظهار الخريطة تفاعلياً -->
+          <iframe
+            src="https://maps.google.com/maps?q=24.5675276,46.8013451&z=15&output=embed"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cart Sidebar Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+      <div class="cart-header">
+        <h3>سلة الطلبات</h3>
+        <button class="close-cart" id="closeCart">&times;</button>
+      </div>
+      <div class="cart-items" id="cartItemsContainer">
+        <!-- Items dynamic inject -->
+        <p style="text-align: center; margin-top: 2rem" id="emptyCartText">
+          السلة فارغة حالياً
+        </p>
+      </div>
+      <div class="cart-footer">
+        <div class="total-price">
+          <span>المجموع الكلي:</span>
+          <span id="totalPriceAmount">0 ريال</span>
+        </div>
+        <button
+          class="btn-primary"
+          style="width: 100%; justify-content: center"
+          onclick="checkout()"
+        >
+          تأكيد الطلب عبر واتساب
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2026 بوفيه مشتاق. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+      let cart = [];
+      const cartBtn = document.getElementById("cartBtn");
+      const closeCart = document.getElementById("closeCart");
+      const cartDrawer = document.getElementById("cartDrawer");
+      const cartItemsContainer = document.getElementById("cartItemsContainer");
+      const emptyCartText = document.getElementById("emptyCartText");
+      const totalPriceAmount = document.getElementById("totalPriceAmount");
+      const cartCount = document.getElementById("cartCount");
+
+      // Toggle Drawer
+      cartBtn.addEventListener("click", () => cartDrawer.classList.add("open"));
+      closeCart.addEventListener("click", () =>
+        cartDrawer.classList.remove("open"),
+      );
+
+      function addToCart(name, price) {
+        cart.push({ name, price });
+        updateCartUI();
+      }
+
+      function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCartUI();
+      }
+
+      function updateCartUI() {
+        cartCount.innerText = cart.length;
+
+        if (cart.length === 0) {
+          emptyCartText.style.display = "block";
+          cartItemsContainer
+            .querySelectorAll(".cart-item")
+            .forEach((el) => el.remove());
+          totalPriceAmount.innerText = "0 ريال";
+          return;
+        }
+
+        emptyCartText.style.display = "none";
+        // Clear current items list
+        cartItemsContainer.innerHTML = "";
+
+        let total = 0;
+        cart.forEach((item, index) => {
+          total += item.price;
+          const itemEl = document.createElement("div");
+          itemEl.classList.add("cart-item");
+          itemEl.innerHTML = `
+                    <div class="cart-item-details">
+                        <h4>${item.name}</h4>
+                        <span>${item.price} ريال</span>
+                    </div>
+                    <button class="remove-item" onclick="removeFromCart(${index})"><i class="fa-solid fa-trash"></i></button>
+                `;
+          cartItemsContainer.appendChild(itemEl);
+        });
+
+        totalPriceAmount.innerText = `${total} ريال`;
+      }
+
+      function checkout() {
+        if (cart.length === 0) {
+          emptyCartText.style.color = "red";
+          emptyCartText.style.opacity = 1;
+          emptyCartText.style.display = "block";
+          return;
+        }
+
+        // صياغة رسالة واتساب بالطلبات لتسهيل تجربة العميل
+        let message = "مرحباً بوفيه مشتاق، أرغب في طلب ما يلي:\n";
+        cart.forEach((item) => {
+          message += `- ${item.name} (${item.price} ريال)\n`;
+        });
+        message += `\n*المجموع الكلي: ${totalPriceAmount.innerText}*`;
+
+        const encodedMessage = encodeURIComponent(message);
+        // توجيه لرقم المطعم مباشرة
+        window.open(
+          `https://wa.me/966539919613?text=${encodedMessage}`,
+          "_blank",
+        );
+      }
+    </script>
+    <script src="sw.js"></script>
+  </body>
+</html>
