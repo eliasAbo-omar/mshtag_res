@@ -691,6 +691,7 @@
 
         if (cart.length === 0) {
           emptyCartText.style.display = "block";
+          emptyCartText.innerText = "السلة فارغة حالياً";
           cartItemsContainer
             .querySelectorAll(".cart-item")
             .forEach((el) => el.remove());
