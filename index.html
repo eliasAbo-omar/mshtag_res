@@ -690,16 +690,20 @@
         cartCount.innerText = cart.length;
 
         if (cart.length === 0) {
-          emptyCartText.style.display = "block";
-          emptyCartText.innerText = "السلة فارغة حالياً";
-          cartItemsContainer
-            .querySelectorAll(".cart-item")
-            .forEach((el) => el.remove());
+          cartItemsContainer.innerHTML = "";
+
+          const p = document.createElement("p");
+          p.id = "emptyCartText";
+          p.innerText = "السلة فارغة حالياً";
+          p.style.cssText =
+            "text-align: center; margin-top: 2rem; opacity: 0.5; color: ''; display: block;";
+
+          cartItemsContainer.appendChild(p);
+
           totalPriceAmount.innerText = "0 ريال";
           return;
         }
 
-        emptyCartText.style.display = "none";
         // Clear current items list
         cartItemsContainer.innerHTML = "";
 
@@ -722,10 +726,15 @@
       }
 
       function checkout() {
+        updateCartUI();
+
         if (cart.length === 0) {
-          emptyCartText.style.color = "red";
-          emptyCartText.style.opacity = 1;
-          emptyCartText.style.display = "block";
+          const currentEmptyText = document.getElementById("emptyCartText");
+
+          if (currentEmptyText) {
+            currentEmptyText.style.color = "red";
+            currentEmptyText.style.opacity = "1";
+          }
           return;
         }
 
